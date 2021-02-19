@@ -6,7 +6,7 @@ The service list configuration has an entry with a valid `url` property but is l
 
 In `federated-server.js`:
 
-```
+```js
 const gateway = new ApolloGateway({
   // NOTE: Here the we have a service with a valid URL but a missing "name" property.
   serviceList: [{"service":"should-be-name", "url":"http://localhost:4001/graphql"}]
