@@ -4,7 +4,7 @@
 
 The service list configuration has an entry with a valid `url` property but is lacking a `name` property.
 
-In `federated-server.js`:
+In [gateway-server.js](https://github.com/spencerarogers/apollo-federation-439-repro/blob/3b47015b063e04025f73c21818d91063d4c83525/gateway-server.js#L4):
 
 ```js
 const gateway = new ApolloGateway({
