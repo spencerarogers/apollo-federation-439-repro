@@ -20,8 +20,32 @@ const gateway = new ApolloGateway({
 3. `node gateway-server.js`
 4. `bin/curl`
 
-## Output
+## Formatted curl response
 
 ```json
-{"errors":[{"message":"unreachable","extensions":{"code":"INTERNAL_SERVER_ERROR","exception":{"stacktrace":["RuntimeError: unreachable","    at <anonymous>:wasm-function[525]:0xa165d","    at <anonymous>:wasm-function[583]:0xa403a","    at <anonymous>:wasm-function[718]:0xa6e56","    at <anonymous>:wasm-function[688]:0xa6828","    at <anonymous>:wasm-function[720]:0xa6eba","    at <anonymous>:wasm-function[654]:0xa5df7","    at <anonymous>:wasm-function[347]:0x934a7","    at <anonymous>:wasm-function[49]:0x5288f","    at <anonymous>:wasm-function[31]:0x45fa7","    at <anonymous>:wasm-function[561]:0xa326f"]}}}]}
+{
+  "errors": [
+    {
+      "message": "unreachable",
+      "extensions": {
+        "code": "INTERNAL_SERVER_ERROR",
+        "exception": {
+          "stacktrace": [
+            "RuntimeError: unreachable",
+            "    at <anonymous>:wasm-function[525]:0xa165d",
+            "    at <anonymous>:wasm-function[583]:0xa403a",
+            "    at <anonymous>:wasm-function[718]:0xa6e56",
+            "    at <anonymous>:wasm-function[688]:0xa6828",
+            "    at <anonymous>:wasm-function[720]:0xa6eba",
+            "    at <anonymous>:wasm-function[654]:0xa5df7",
+            "    at <anonymous>:wasm-function[347]:0x934a7",
+            "    at <anonymous>:wasm-function[49]:0x5288f",
+            "    at <anonymous>:wasm-function[31]:0x45fa7",
+            "    at <anonymous>:wasm-function[561]:0xa326f"
+          ]
+        }
+      }
+    }
+  ]
+}
 ```
