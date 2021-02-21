@@ -18,7 +18,7 @@ const gateway = new ApolloGateway({
 1. `yarn install`
 2. `node implementing-server.js`
 3. `node gateway-server.js`
-4. `bin/curl`
+4. `curl 'http://localhost:4000/graphql' -H 'Accept-Encoding: gzip, deflate, br' -H 'Content-Type: application/json' -H 'Accept: application/json' -H 'Connection: keep-alive' -H 'DNT: 1' -H 'Origin: http://localhost:4000' --data-binary '{"query":"query {\n  me {\n    id\n  }\n}"}' --compressed`
 
 ## Formatted curl response
 
