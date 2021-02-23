@@ -13,8 +13,8 @@ const gateway = new ApolloGateway({
 });
 ```
 
-In this version, we demonstrate that a query will still succeed as long as it doesn't send a request to the service
-with the invalid configuration.
+In this version, we demonstrate that a query will still succeed with an invalid service config present as long as it
+doesn't send a request to the service with the invalid configuration.
 
 ## Reproduction
 
@@ -52,7 +52,16 @@ query {
 ```
 
 
-## Formatted curl response
+## Formatted responses
+```json
+{
+  "data": {
+    "you": {
+      "id": "2"
+    }
+  }
+}
+```
 
 ```json
 {
