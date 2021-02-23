@@ -13,12 +13,44 @@ const gateway = new ApolloGateway({
 });
 ```
 
+In this version, we demonstrate that a query will still succeed as long as it doesn't send a request to the service
+with the invalid configuration.
+
 ## Reproduction
 
 1. `yarn install`
 2. `node implementing-server.js`
+2. `node implementing-server-2.js`
 3. `node gateway-server.js`
-4. `curl 'http://localhost:4000/graphql' -H 'Accept-Encoding: gzip, deflate, br' -H 'Content-Type: application/json' -H 'Accept: application/json' -H 'Connection: keep-alive' -H 'DNT: 1' -H 'Origin: http://localhost:4000' --data-binary '{"query":"query {\n  me {\n    id\n  }\n}"}' --compressed`
+5. Working query that only hits `implementing-server-2.js`.
+  - `curl 'http://localhost:4000/' -H 'Accept-Encoding: gzip, deflate, br' -H 'Content-Type: application/json' -H 'Accept: application/json' -H 'Connection: keep-alive' -H 'DNT: 1' -H 'Origin: http://localhost:4000' --data-binary '{"query":"# Write your query or mutation here\nquery {  \n  you {\n    id\n  }\n}"}' --compressed`
+6. Non-working query that hits both implementing servers.
+  - `curl 'http://localhost:4000/' -H 'Accept-Encoding: gzip, deflate, br' -H 'Content-Type: application/json' -H 'Accept: application/json' -H 'Connection: keep-alive' -H 'DNT: 1' -H 'Origin: http://localhost:4000' --data-binary '{"query":"# Write your query or mutation here\nquery {\n  me {\n    id\n  }\n  \n  you {\n    id\n  }\n}"}' --compressed`
+
+## Formatted queries
+
+```graphql
+# Working query
+query {  
+  you {
+    id
+  }
+}
+```
+
+```graphql
+# Non-working query
+query {  
+  you {
+    id
+  }
+
+  me {
+    id
+  }
+}
+```
+
 
 ## Formatted curl response
 

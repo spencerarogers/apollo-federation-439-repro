@@ -3,7 +3,10 @@ const { ApolloGateway } = require('@apollo/gateway');
 
 const gateway = new ApolloGateway({
   // NOTE: Here the we have a service with a valid URL but a missing "name" property.
-  serviceList: [{"service":"should-be-name", "url":"http://localhost:4001/graphql"}]
+  serviceList: [
+    {"service":"should-be-name", "url":"http://localhost:4001/graphql"},
+    {"name":"correct-name-key", "url":"http://localhost:4002/graphql"}
+  ]
 });
 
 const server = new ApolloServer({
